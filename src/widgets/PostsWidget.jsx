@@ -7,7 +7,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts);
   const token = useSelector((state) => state.token);
-  
+
   //Get all posts
   const getPosts = async () => {
     const response = await fetch(`http://localhost:3001/posts`, {
@@ -16,7 +16,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
     });
 
     const data = await response.json();
-    return data;
+    dispatch(setPosts({ posts: [...data] }));
   };
 
   //Get single user post
@@ -30,33 +30,18 @@ const PostsWidget = ({ userId, isProfile = false }) => {
     );
 
     const data = await response.json();
-    return data;
+    dispatch(setPosts({ posts: [...data] }));
   };
 
   useEffect(() => {
-    let cancel = false;
-    getUserPosts().then((data) => {
-      if (isProfile) {
-        if (!cancel) {
-          dispatch(setPosts({ posts: data }));
-        }
-      } else {
-       getPosts().then(data => {
-        if (!cancel) {
-          dispatch(setPosts({ posts: data }));
-        }
-       })
-       
-      }
-    });
+    if (isProfile) {
+      getUserPosts();
+    } else {
+      getPosts();
+    }
+  }, []);
 
-    return () => {
-      cancel = true;
-    };
-  },[]);
-
-  console.log(posts);
-  if (Object.keys(posts).length <= 0) return null;
+  if(!posts) return null
 
   return (
     <>

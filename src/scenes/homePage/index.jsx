@@ -1,5 +1,5 @@
 import { Box, useMediaQuery } from "@mui/material";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Navbar from "scenes/navbar";
 import UserWidget from "widgets/UserWidget";
 import PostsWidget from "widgets/PostsWidget";
@@ -12,18 +12,6 @@ import { setPosts } from "state";
 const HomePage = () => {
   const isNonMobileScreen = useMediaQuery("(min-width: 1000px)");
   const { _id, picturePath } = useSelector((state) => state.user);
-  const posts = useSelector((state) => state.posts);
-  const dispatch = useDispatch();
-  // useEffect(() => {
-  //   let cancel = false;
-  //   if (!cancel) {
-  //     dispatch(setPosts({ posts }));
-  //   }
-
-  //   return () => {
-  //     cancel = true;
-  //   };
-  // });
 
   return (
     <Box>

@@ -9,7 +9,7 @@ import UserImage from "components/UserImage";
 import FlexBetween from "components/FlexBetween";
 import WidgetWrapper from "components/WidgetWrapper";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { setUser } from "state";
 
@@ -17,7 +17,7 @@ const UserWidget = ({ userId, picturePath }) => {
   const { palette } = useTheme();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user = useSelector(state => state.user)
+  const user = useSelector((state) => state.user);
   const token = useSelector((state) => state.token);
   const dark = palette.neutral.dark;
   const medium = palette.neutral.medium;
@@ -30,23 +30,13 @@ const UserWidget = ({ userId, picturePath }) => {
     });
 
     const data = await response.json();
-    return data;
+    dispatch(setUser({ user: data }));
   };
 
   useEffect(() => {
-    let cancel = false;
-    getUser().then((data) => {
-      if (!cancel) {
-        dispatch(setUser({ user: data }));
-      }
-    });
-
-    return () => {
-      cancel = true;
-    };
+    getUser();
   }, []); //eslint-disable-line react-hooks/exhaustive-deps
 
-  if (!user) return null;
 
   const {
     firstName,
@@ -82,7 +72,9 @@ const UserWidget = ({ userId, picturePath }) => {
             >
               {firstName} {lastName}
             </Typography>
-            <Typography color={medium}>{friends.length} friends</Typography>
+            <Typography color={medium}>
+              { friends && friends.length} {friends.length > 1 ? "friends" : "friend"}
+            </Typography>
           </Box>
         </FlexBetween>
         <ManageAccountsOutlined />

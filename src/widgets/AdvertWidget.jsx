@@ -27,10 +27,10 @@ const medium = palette.neutral.medium
     />
     <FlexBetween>
       <Typography color={main}>GlamourCosmetics.</Typography>
-      <Typography color={medium}>
-        {"GlamourCosmetics".toLocaleLowerCase()}
-      </Typography>
     </FlexBetween>
+    <Typography color={medium}>
+        {"GlamourCosmetics.com".toLocaleLowerCase()}
+      </Typography>
     <Typography color={medium} margin="0.5rem 0">
       Your pathway to epidermal breakthrough. Exfoliates your skin to give the
       real skin.
