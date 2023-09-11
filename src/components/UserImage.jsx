@@ -1,11 +1,12 @@
 import { Box } from "@mui/material";
 
 const UserImage = ({ image, size = "60px" }) => {
+  const baseUrl = `http://localhost:3001`;
 
-    return (
+  return (
     <Box width={size} height={size}>
       <img
-        src={`http://localhost:3001/assets/${image}`}
+        src={`${baseUrl}/assets/${image}`}
         alt="user"
         style={{ objectFit: "cover", borderRadius: "50%" }}
         width={size}
@@ -15,4 +16,4 @@ const UserImage = ({ image, size = "60px" }) => {
   );
 };
 
-export default UserImage
+export default UserImage;

@@ -38,8 +38,10 @@ const PostWidget = ({
 
   const patchLike = async () => {
     try {
+  const baseUrl = `http://localhost:3001`
+
       const response = await fetch(
-        `http://localhost:3001/posts/${postId}/like`,
+        `${baseUrl}/posts/${postId}/like`,
         {
           method: "PATCH",
           headers: {

@@ -63,8 +63,8 @@ const Form = () => {
       formData.append(value, values[value]);
     }
     formData.append("picturePath", values.picture.name);
-    
-    const savedUserResponse = await fetch(`http://localhost:3001/auth/register`, {
+     const baseUrl = `http://localhost:3001`
+    const savedUserResponse = await fetch(`${baseUrl}/auth/register`, {
       method: "POST",
       body: formData,
     });
@@ -75,7 +75,9 @@ const Form = () => {
   };
 
   const login = async (values, onSubmitProps) => {
-    const loggedInResponse = await fetch(`http://localhost:3001/auth/login`, {
+  const baseUrl = `http://localhost:3001`
+
+    const loggedInResponse = await fetch(`${baseUrl}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),

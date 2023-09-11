@@ -24,7 +24,9 @@ const UserWidget = ({ userId, picturePath }) => {
   const main = palette.neutral.main;
 
   const getUser = async () => {
-    const response = await fetch(`http://localhost:3001/users/${userId}`, {
+    const baseUrl = `http://localhost:3001`
+
+    const response = await fetch(`${baseUrl}/users/${userId}`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -36,7 +38,6 @@ const UserWidget = ({ userId, picturePath }) => {
   useEffect(() => {
     getUser();
   }, []); //eslint-disable-line react-hooks/exhaustive-deps
-
 
   const {
     firstName,
@@ -73,7 +74,8 @@ const UserWidget = ({ userId, picturePath }) => {
               {firstName} {lastName}
             </Typography>
             <Typography color={medium}>
-              { friends && friends.length} {friends.length > 1 ? "friends" : "friend"}
+              {friends && friends.length}{" "}
+              {friends.length > 1 ? "friends" : "friend"}
             </Typography>
           </Box>
         </FlexBetween>
