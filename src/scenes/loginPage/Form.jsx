@@ -63,7 +63,7 @@ const Form = () => {
       formData.append(value, values[value]);
     }
     formData.append("picturePath", values.picture.name);
-     const baseUrl = `http://localhost:3001`
+     const baseUrl = `https://converse-8fmq.onrender.com`
     const savedUserResponse = await fetch(`${baseUrl}/auth/register`, {
       method: "POST",
       body: formData,
@@ -75,7 +75,7 @@ const Form = () => {
   };
 
   const login = async (values, onSubmitProps) => {
-  const baseUrl = `http://localhost:3001`
+  const baseUrl = `https://converse-8fmq.onrender.com`
 
     const loggedInResponse = await fetch(`${baseUrl}/auth/login`, {
       method: "POST",
