@@ -10,7 +10,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
 
   //Get all posts
   const getPosts = async () => {
-    const response = await fetch(`http://localhost:3001/posts`, {
+    const response = await fetch(`https://converse-8fmq.onrender.com/posts`, {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -21,7 +21,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
 
   //Get single user post
   const getUserPosts = async () => {
-  const baseUrl = `http://localhost:3001`
+  const baseUrl = `https://converse-8fmq.onrender.com`
 
     const response = await fetch(
       `${baseUrl}/posts/${userId}/posts`,

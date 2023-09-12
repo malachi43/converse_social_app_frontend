@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 
 const UserImage = ({ image, size = "60px" }) => {
-  const baseUrl = `http://localhost:3001`;
+  const baseUrl = `https://converse-8fmq.onrender.com`;
 
   return (
     <Box width={size} height={size}>

@@ -16,7 +16,7 @@ const ProfilePage = () => {
   const isNonMobileScreen = useMediaQuery("(min-width: 1000px)");
 
   const getUser = async () => {
-    const baseUrl = `http://localhost:3001`
+    const baseUrl = `https://converse-8fmq.onrender.com`
 
     const response = await fetch(`${baseUrl}/users/${userId}`, {
       method: "GET",

@@ -45,7 +45,7 @@ const MyPostWidget = ({ picturePath }) => {
       formData.append("picture", image);
       formData.append("picturePath", image.name);
     }
-  const baseUrl = `http://localhost:3001`
+  const baseUrl = `https://converse-8fmq.onrender.com`
 
     const response = await fetch(`${baseUrl}/posts`, {
       method: "POST",

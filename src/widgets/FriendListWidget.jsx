@@ -12,7 +12,7 @@ const FriendListWidget = ({ userId }) => {
   const friends = useSelector((state) => state.user.friends);
   const getFriends = async () => {
     try {
-  const baseUrl = `http://localhost:3001`
+  const baseUrl = `https://converse-8fmq.onrender.com`
 
       const response = await fetch(
         `${baseUrl}/users/${userId}/friends`,
